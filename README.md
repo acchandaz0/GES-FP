@@ -1,4 +1,4 @@
-# ✨apt-deliver packages✨
+# ✨apt-deliver packages✨ (Android compatible version)
 
 A pathfinding-based puzzle game where the player controls a delivery robot to deliver packages efficiently across a map using the A* algorithm.
 
@@ -14,34 +14,8 @@ We use A* Algorithm to find the shortest path between delivery points. The map i
 ## 🕹️ Gameplay
 - Use arrow keys / wasd to move
 - Plan routes carefully to avoid fuel loss
-- Use your smartphone to get optimal paths
+- Use your battery to get optimal paths
 - Complete all deliveries before running out
 
-## 📁 Project Structure
-- `/src` - Source code
-- `/assets` - Images and tiles
-- `runner.py` - Game launcher
-- `requirements.py` - List of dependencies
-
-## 🔧 Tech Stack
-- Python + Pygame
-- JSON for save files
-- txt for map design
-
 ## 📊 Sample Output
-[screenshots](https://drive.google.com/drive/folders/1DL5ur-BZKO_dQWJ1-mISFOIxRebqlWb5)
-
-## 📚 How to Run
-```bash
-pip install -r requirements.txt
-python src/main.py
-```
-### Team Members  
-| Name | NRP | Roles |
-| --- | --- | --- |
-| Arsya Dewi Lathifa | 5025221015 | UI/UX Lead |
-| Muhammad Nabil Akhtar Raya Amoriza | 5025221021 | Systems & Features Lead |
-| Billy Jonathan | 5025221170 | Core / Gameplay Lead |
-
-🧾 Full Report
-You can find our full PDF report [here](https://docs.google.com/document/d/1INlLs4CUI4TBzhKMi-4HU_PfyAIFJwXU4b_qLlXrY1U/edit?tab=t.0)
+[screenshots](https://drive.google.com/drive/folders/1sbBDQzeyarHMUTVr3DXRqNvMcYWIryTj?usp=drive_link)
