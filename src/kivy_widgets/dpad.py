@@ -4,11 +4,11 @@ from kivy.properties import ObjectProperty, NumericProperty
 
 class DPad(Widget):
     callback = ObjectProperty(None)
-    size_hint = (None, None)
+    # size_hint = (None, None)
     
     def __init__(self, **kwargs):
         super(DPad, self).__init__(**kwargs)
-        self.size = (150, 150)  # Default size
+        # self.size = (150, 150)  # Default size
         self.bind(pos=self._update_graphics, size=self._update_graphics)
         self._update_graphics()
         
@@ -34,7 +34,7 @@ class DPad(Widget):
         # Draw buttons
         with self.canvas:
             # Background
-            Color(0.2, 0.2, 0.2, 0.7)
+            Color(1, 1, 1, 0.5)
             Rectangle(pos=self.pos, size=self.size)
             
             # Up button

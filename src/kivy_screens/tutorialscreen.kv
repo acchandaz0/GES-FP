@@ -1,0 +1,31 @@
+#:kivy 2.2.1
+#:import ImageButton kivy_widgets.image_button.ImageButton
+
+<TutorialScreen>:
+    FloatLayout:
+        # --- Background Image ---
+        # The entire tutorial screen is just one image.
+        canvas.before:
+            Color:
+                rgba: 1, 1, 1, 1
+            Rectangle:
+                source: app.path_tutorial_background # Path variable from kivy_main.py
+                size: self.size
+                pos: self.pos
+
+        # --- Back Button (Top-center) ---
+        RelativeLayout:
+            size_hint: None, None
+            size: "150dp", "50dp"
+            pos_hint: {'center_x': 0.5, 'top': 0.30} # Position at the top-center
+            
+            ImageButton:
+                source_normal: app.path_button_normal # Use the normal button image
+                size_hint: 1, 1
+                pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+                on_release: app.play_button_sound(); root.manager.current = 'title'
+
+            Label:
+                text: "Back"
+                font_name: "Minecraft"
+                pos_hint: {'center_x': 0.5, 'center_y': 0.5}

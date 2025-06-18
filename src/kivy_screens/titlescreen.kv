@@ -1,0 +1,78 @@
+#:kivy 2.2.1
+#:import ImageButton kivy_widgets.image_button.ImageButton
+
+<TitleScreen>:
+    canvas.before:
+        Color:
+            rgba: 1, 1, 1, 1
+        Rectangle:
+            # Use the path variable from the app instance
+            source: app.path_title_background
+            size: self.size
+            pos: self.pos
+
+    FloatLayout:
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint: None, None
+            width: "250dp"
+            height: self.minimum_height
+            pos_hint: {'center_x': 0.5, 'center_y': 0.45}
+            spacing: '10dp'
+
+            # --- Start Game Button ---
+            RelativeLayout:
+                size_hint_y: None
+                height: "50dp"
+                ImageButton:
+                    # Use the path variable from the app
+                    source_normal: app.path_button_normal
+                    size_hint: 1, 1
+                    pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+                    on_release: app.play_button_sound(); root.manager.current = 'main_menu'
+                Label:
+                    text: "Start Game"
+                    font_name: "Minecraft"
+                    pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+
+            # --- Tutorial Button ---
+            RelativeLayout:
+                size_hint_y: None
+                height: "50dp"
+                ImageButton:
+                    source_normal: app.path_button_normal
+                    size_hint: 1, 1
+                    pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+                    on_release: app.play_button_sound(); root.manager.current = 'tutorial'
+                Label:
+                    text: "Tutorial"
+                    font_name: "Minecraft"
+                    pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+
+            # --- Settings Button ---
+            RelativeLayout:
+                size_hint_y: None
+                height: "50dp"
+                ImageButton:
+                    source_normal: app.path_button_normal
+                    size_hint: 1, 1
+                    pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+                    on_release: app.play_button_sound(); root.manager.current = 'settings'
+                Label:
+                    text: "Settings"
+                    font_name: "Minecraft"
+                    pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+
+            # --- Exit Button ---
+            RelativeLayout:
+                size_hint_y: None
+                height: "50dp"
+                ImageButton:
+                    source_normal: app.path_button_warning
+                    size_hint: 1, 1
+                    pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+                    on_release: app.play_button_sound(); app.stop()
+                Label:
+                    text: "Exit"
+                    font_name: "Minecraft"
+                    pos_hint: {'center_x': 0.5, 'center_y': 0.5}

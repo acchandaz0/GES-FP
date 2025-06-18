@@ -1,0 +1,64 @@
+#:kivy 2.2.1
+#:import ImageButton kivy_widgets.image_button.ImageButton
+
+<MainMenuScreen>:
+    # The 'level_grid' id is crucial, as it allows our Python code
+    # to access and add widgets to this GridLayout.
+    id: main_menu_screen
+
+    canvas.before:
+        Color:
+            rgba: 1, 1, 1, 1
+        # The background image. It will stretch to fill the screen.
+        Rectangle:
+            source: 'assets/images/backgrounds/main_menu_new.png'
+            size: self.size
+            pos: self.pos
+
+    FloatLayout:
+        RelativeLayout:
+            size_hint: None, None
+            size: "200dp", "50dp" 
+            pos_hint: {'x': 0.05, 'y': 0.09} 
+            ImageButton:
+                source_normal: app.path_button_normal
+                size_hint: (1, 1) # Make the image fill the container
+                pos_hint: {'center_x': 0.5, 'center_y': 0.5} # Center it
+                on_release: app.play_button_sound(); root.manager.current = 'title'
+            Label:
+                text: "Back to Title"
+                font_name: "Minecraft"
+                pos_hint: {'center_x': 0.5, 'center_y': 0.5} # Center the text
+
+        # MDRaisedButton:
+        #     text: "Back to Title"
+        #     font_name: "assets/fonts/Minecraft.ttf"
+        #     pos_hint: {'x': 0.05, 'top': 0.15}
+        #     on_press:
+        #         app.play_button_sound()
+        #         root.manager.current = 'title'
+        #         root.manager.transition.direction = 'right'
+
+        # "Select Level" Title
+        # MDLabel:
+        #     text: "Select Level"
+        #     halign: 'center'
+        #     # font_style: 'H4'
+        #     font_name: "assets/fonts/Minecraft.ttf"
+        #     pos_hint: {'center_x': 0.5, 'top': 0.9}
+            
+        # This ScrollView allows the user to scroll through levels if there are too many to fit on screen.
+        ScrollView:
+            size_hint: (0.8, 0.7) # 80% width, 70% height
+            pos_hint: {'center_x': 0.5, 'center_y': 0.45}
+            do_scroll_x: False # Only allow vertical scrolling
+
+            # The GridLayout will hold our level buttons.
+            # Its height will grow dynamically as we add buttons.
+            GridLayout:
+                id: level_grid # This is the container we will add buttons to
+                cols: 3       # 3 buttons per row, just like the original
+                spacing: "15dp"
+                padding: "15dp"
+                size_hint_y: None
+                height: self.minimum_height # This makes the grid scrollable

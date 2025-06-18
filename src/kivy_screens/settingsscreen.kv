@@ -1,0 +1,66 @@
+#:kivy 2.2.1
+#:import ImageButton kivy_widgets.image_button.ImageButton
+
+<SettingsScreen>:
+    id: settings_screen
+
+    canvas.before:
+        Color:
+            rgba: 1, 1, 1, 1
+        Rectangle:
+            # Assumes you have a background named 'settings_new.png'
+            # and a path variable for it in kivy_main.py
+            source: app.path_settings_background
+            size: self.size
+            pos: self.pos
+
+    FloatLayout:
+        # --- Title Label ---
+        # You can add a title label here if you wish, similar to other screens
+
+        # --- Back Button (Top-left) ---
+        RelativeLayout:
+            size_hint: None, None
+            size: "150dp", "50dp"
+            pos_hint: {'x': 0.05, 'top': 0.20}
+            ImageButton:
+                source_normal: app.path_button_normal # Use the normal button image
+                size_hint: 1, 1
+                pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+                on_release: app.play_button_sound(); root.manager.current = 'title'
+            Label:
+                text: "Back"
+                font_name: "Minecraft"
+                pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+
+        # --- Centered Box for Reset Button and Feedback ---
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint: None, None
+            size: "300dp", "150dp"
+            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+            spacing: '20dp'
+
+            # --- Reset Button (Warning Style) ---
+            RelativeLayout:
+                size_hint_y: None
+                height: "50dp"
+                ImageButton:
+                    source_normal: app.path_button_warning # Use the warning button image
+                    size_hint: 1, 1
+                    pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+                    on_release: app.play_button_sound(); root.show_reset_confirmation()
+                Label:
+                    text: "Reset All Progress"
+                    font_name: "Minecraft"
+                    pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+
+            # --- Feedback Label ---
+            MDLabel:
+                id: feedback_label
+                text: ""
+                halign: 'center'
+                font_name: "Minecraft"
+                # Set a custom color if needed, otherwise it will use the theme's text color
+                # theme_text_color: "Custom"
+                # text_color: 0, 1, 0, 1

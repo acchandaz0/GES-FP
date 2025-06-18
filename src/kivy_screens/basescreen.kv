@@ -1,0 +1,22 @@
+#:kivy 2.2.1
+
+# This rule defines the default look for our BaseScreen and any class that inherits from it.
+<BaseScreen>:
+    # --- This canvas block replaces the need to manually draw a background in a `render` loop ---
+    canvas.before:
+        Color:
+            rgba: 0.1, 0.1, 0.2, 1  # A dark blue/purple background color (R, G, B, Alpha)
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    
+    # You can add widgets here that you want on EVERY screen.
+    # For example, a back button to return to the main menu.
+    
+    # MDRaisedButton:
+    #     text: "Back"
+    #     pos_hint: {'x': 0.05, 'top': 0.95}
+    #     on_press:
+    #         # `root.manager` refers to the ScreenManager controlling this screen.
+    #         root.manager.current = 'main_menu' # Navigate to the main menu screen
+    #         root.manager.transition.direction = 'right'
