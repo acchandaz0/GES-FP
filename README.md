@@ -17,5 +17,10 @@ We use A* Algorithm to find the shortest path between delivery points. The map i
 - Use your battery to get optimal paths
 - Complete all deliveries before running out
 
-## 📊 Sample Output
+## 📊 Game Play
+| ![](images/title.png) | ![](images/menu.png) |
+| ----- | ----- |
+| ![](images/tut.png) | ![](images/set.png) |
+| ![](images/gem.png) |  |
+
 [screenshots](https://drive.google.com/drive/folders/1sbBDQzeyarHMUTVr3DXRqNvMcYWIryTj?usp=drive_link)
