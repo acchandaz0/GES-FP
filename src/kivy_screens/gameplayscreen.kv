@@ -1,6 +1,14 @@
 #:kivy 2.2.1
 
 <GamePlayScreen>:
+    # --- Add this block to set the background ---
+    canvas.before:
+        Rectangle:
+            # IMPORTANT: Change this to the actual path of your background image
+            source: 'assets/images/backgrounds/gameplay.png' 
+            size: self.size
+            pos: self.pos
+
     game_grid: game_grid_id
     fuel_label: fuel_label_id
     battery_label: battery_label_id
@@ -8,7 +16,7 @@
     hint_button: hint_button_id
 
     FloatLayout:
-        # The Game Grid takes up most of the screen
+        # The rest of your code remains the same...
         GameGrid:
             id: game_grid_id
             size_hint: 1, 0.85
@@ -23,7 +31,7 @@
 
             canvas.before:
                 Color:
-                    rgba: 1, 1, 1, 0.5  # Semi-transparent black (adjust alpha for transparency)
+                    rgba: 1, 1, 1, 0.5  # Semi-transparent white
                 Rectangle:
                     size: self.size
                     pos: self.pos
@@ -59,7 +67,7 @@
             # --- Hint Button (Small) ---
             RelativeLayout:
                 ImageButton:
-                    id: hint_button_id  # <--- ADD THIS ID HERE
+                    id: hint_button_id
                     source_normal: app.path_button_small
                     on_release: app.play_button_sound(); root.request_hint()
                 Label:
@@ -71,7 +79,6 @@
             # --- Menu Button (Small) ---
             RelativeLayout:
                 ImageButton:
-                    # This button doesn't need an id, since it's not referenced in Python
                     source_normal: app.path_button_small
                     on_release: app.play_button_sound(); root.show_menu()
                 Label:
