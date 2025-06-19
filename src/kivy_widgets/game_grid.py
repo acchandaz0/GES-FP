@@ -26,10 +26,13 @@ class GameGrid(Widget):
         """Load all image textures into a dictionary."""
         config = App.get_running_app().config
         self.textures = {
-            'player': 'assets/images/player/player.png',
-            config.WALL_TILE: 'assets/images/tiles/wall.png',
+            'player': 'assets/images/tiles/player.PNG',
+            config.WALL_TILE: 'assets/images/tiles/wall_new.PNG',
             'DEST_VISITED': 'assets/images/tiles/visited.png',
-            'DEST_UNVISITED': 'assets/images/tiles/unvisited.png'
+            'DEST_UNVISITED': 'assets/images/tiles/unvisited.png',
+            config.ROAD_TILE_1: 'assets/images/tiles/road-1.PNG',
+            config.ROAD_TILE_2: 'assets/images/tiles/road-2.PNG',
+            config.ROAD_TILE_3: 'assets/images/tiles/road-3.PNG'
         }
         print(f"Textures loaded: {self.textures}")
         
@@ -52,28 +55,32 @@ class GameGrid(Widget):
                     # Kivy's y-axis is bottom-up, so we invert the row index
                     y = offset_y + (len(self.map_data) - 1 - r_idx) * self.tile_size
 
-                    # Determine color for the tile background
-                    if tile_char == config.ROAD_TILE_2:
-                        Color(0.98, 0.58, 0.29, 1)  # Orange
-                    elif tile_char == config.ROAD_TILE_3:
-                        Color(0.92, 0.03, 0.11, 1)  # Red
-                    else:
-                        Color(1, 1, 1, 1)  # Default white
-                    
-                    Rectangle(pos=(x, y), size=(self.tile_size, self.tile_size))
-
-                    # Determine which texture to draw on top
                     texture_source = None
+
+                    # Determine the correct texture for the current tile character
                     if tile_char == config.WALL_TILE:
                         texture_source = self.textures.get(config.WALL_TILE)
                     elif tile_char == config.DESTINATION_TILE:
                         pos = (c_idx, r_idx)
                         visited = any(d['pos'] == pos and d['visited'] for d in self.destinations)
                         texture_source = self.textures.get('DEST_VISITED') if visited else self.textures.get('DEST_UNVISITED')
-                    
+                    elif tile_char == config.ROAD_TILE_1:
+                        texture_source = self.textures.get(config.ROAD_TILE_1)
+                    elif tile_char == config.ROAD_TILE_2:
+                        texture_source = self.textures.get(config.ROAD_TILE_2)
+                    elif tile_char == config.ROAD_TILE_3:
+                        texture_source = self.textures.get(config.ROAD_TILE_3)
+                    # Add a default case if you have a generic road tile character
+                    else: 
+                        # Fallback to a default road tile if the character is not recognized
+                        texture_source = self.textures.get(config.ROAD_TILE_1)
+
+                    # Draw the tile with its determined texture
                     if texture_source:
+                        # Reset color to white to ensure texture is not tinted
+                        Color(1, 1, 1, 1)
                         Rectangle(pos=(x, y), size=(self.tile_size, self.tile_size), source=texture_source)
-            
+
             # --- Draw Hint Path (under the player) ---
             if self.hint_path:
                 Color(0.2, 0.8, 1, 0.5) # Semi-transparent light blue
@@ -89,7 +96,7 @@ class GameGrid(Widget):
                 y = offset_y + (len(self.map_data) - 1 - player_r) * self.tile_size
                 Color(1, 1, 1, 1) # Reset color to white before drawing texture
                 Rectangle(pos=(x, y), size=(self.tile_size, self.tile_size), source=self.textures.get('player'))
-            
+
             # --- Draw Grid Lines (on top of everything) ---
             Color(0.5, 0.5, 0.5, 0.5)
             for r in range(len(self.map_data) + 1):

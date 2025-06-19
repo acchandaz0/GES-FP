@@ -21,6 +21,7 @@ We use A* Algorithm to find the shortest path between delivery points. The map i
 | ![](images/title.png) | ![](images/menu.png) |
 | ----- | ----- |
 | ![](images/tut.png) | ![](images/set.png) |
-| ![](images/gem.png) |  |
+| ![](images/gem2.png) | ![](images/gem3.png) |
+|![](images/gem4.png) | |
 
 [screenshots](https://drive.google.com/drive/folders/1sbBDQzeyarHMUTVr3DXRqNvMcYWIryTj?usp=drive_link)
