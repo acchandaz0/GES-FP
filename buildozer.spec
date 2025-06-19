@@ -1,32 +1,40 @@
 [app]
-title = apt-deliver packages
-package.name = aptdeliver
-package.domain = org.aptdeliver
-source.dir = .
-source.include_exts = py,png,jpg,kv,atlas,txt
-version = 0.1
+# (str) Title of your application
+title = Apt-deliver
+
+# (str) Package name
+package.name = aptdeliverpackage
+
+# (str) Package domain (needed for android/ios packaging)
+package.domain = com.arsya.aptdeliverpackage
+
+# (str) Source code where the main.py live
+source.dir = src
+
+# (str) The main file of your app
+app.executable = kivy_main.py
+
+# (list) Source files to include (let empty to include all the files)
+source.include_exts = py,png,jpg,kv,atlas,ttf,otf
+
+# (list) List of modules toனே include in your package
 requirements = python3,kivy
 
-# Android specific
-android.permissions = INTERNET
-android.api = 29
+# (str) The Android arch to build for, one of armeabi-v7a, arm64-v8a, x86, x86_64
+# Google Play requires arm64-v8a
+android.arch = arm64-v8a
+
+# (int) Android API to use
+android.api = 31
+
+# (int) Minimum API required
 android.minapi = 21
-android.sdk = 29
-android.ndk = 21.4.7075529
-android.arch = armeabi-v7a
 
-# Orientation
-orientation = portrait
+# (str) Supported orientation (one of landscape, portrait or all)
+orientation = landscape
 
-# Application entry point
-android.entrypoint = src.kivy_main:AptDeliverApp
+# (bool) Indicate if the application should be fullscreen or not
+fullscreen = 1
 
-# Include necessary files
-source.include_patterns = assets/*,src/*
-
-# Exclude unnecessary files
-source.exclude_dirs = __pycache__,bin,build,dist
-
-# Icon and presplash (you can update these later)
-#icon.filename = %(source.dir)s/assets/images/icon.png
-#presplash.filename = %(source.dir)s/assets/images/splash.png
+# (list) Permissions
+android.permissions = INTERNET
