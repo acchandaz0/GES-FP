@@ -2,6 +2,9 @@
 # (str) Title of your application
 title = Apt-deliver
 
+# (str) Version of your application
+version = 1.0
+
 # (str) Package name
 package.name = aptdeliverpackage
 
