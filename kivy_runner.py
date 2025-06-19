@@ -11,7 +11,7 @@ src_dir = os.path.join(current_dir, 'src')
 sys.path.append(src_dir)
 
 # Now import and run the Kivy app
-from src.kivy_main import AptDeliverApp
+from main import AptDeliverApp
 
 if __name__ == '__main__':
     AptDeliverApp().run()

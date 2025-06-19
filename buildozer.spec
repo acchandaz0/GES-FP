@@ -9,13 +9,13 @@ version = 1.0
 package.name = aptdeliverpackage
 
 # (str) Package domain (needed for android/ios packaging)
-package.domain = com.arsya.aptdeliverpackage
+package.domain = com.arsya
+
+# (str) custom python-for-android branch to use
+p4a.branch = develop
 
 # (str) Source code where the main.py live
 source.dir = src
-
-# (str) The main file of your app
-app.executable = kivy_main.py
 
 # (list) Source files to include (let empty to include all the files)
 source.include_exts = py,png,jpg,kv,atlas,ttf,otf
@@ -28,7 +28,13 @@ requirements = python3,kivy
 android.arch = arm64-v8a
 
 # (int) Android API to use
-android.api = 31
+android.api = 33
+
+# (str) The Android build tools version to use
+android.build_tools_version = 33.0.0
+
+# (str) The Android SDK platform to use
+android.sdk_platform = 33
 
 # (int) Minimum API required
 android.minapi = 21
